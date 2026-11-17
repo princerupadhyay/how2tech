@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://how2tech.in/sitemap-index.xml
+Sitemap: https://www.how2tech.in/sitemap.xml
