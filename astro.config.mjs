@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { copyFile } from 'node:fs/promises';
 
+const sitemapBuildDate = new Date();
 const sitemapXmlAlias = {
   name: 'sitemap-xml-alias',
   hooks: {
@@ -17,6 +18,18 @@ export default defineConfig({
   base: '/',
   trailingSlash: 'always',
   build: { format: 'directory' },
-  integrations: [sitemap(), sitemapXmlAlias],
+  integrations: [
+    sitemap({
+      serialize(item) {
+        return {
+          ...item,
+          lastmod: item.lastmod ?? sitemapBuildDate,
+          changefreq: 'daily',
+          priority: 1.0,
+        };
+      },
+    }),
+    sitemapXmlAlias,
+  ],
   markdown: { shikiConfig: { theme: 'github-dark' } },
 });
