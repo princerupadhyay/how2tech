@@ -1,0 +1,5 @@
+---
+import Icon from './Icon.astro';
+const { title, href } = Astro.props;
+---
+<div class="sh"><h2><span>{title}</span></h2>{href && <a class="sh-btn" href={href}>View all <Icon name="arrow" size={13} /></a>}</div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://how2tech.in/sitemap-index.xml

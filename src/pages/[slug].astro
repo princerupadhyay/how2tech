@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { allPosts, url, catOf, fmt, iso, related } from '../lib/posts';
+export async function getStaticPaths() {
+  return (await allPosts()).map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+const posts = await allPosts();
+const i = posts.findIndex((p) => p.slug === post.slug);
+const older = posts[i + 1], newer = posts[i - 1];
+const { Content, headings } = await post.render();
+const d = post.data, c = catOf(d.category), full = site.url + url(post);
+const img = site.url + d.featuredImage;
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description, image: img, datePublished: iso(d.publishedAt), dateModified: iso(d.updatedAt ?? d.publishedAt), author: { '@type': 'Organization', name: d.author }, publisher: { '@type': 'Organization', name: site.name, url: site.url }, mainEntityOfPage: full },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: site.url + '/' }, { '@type': 'ListItem', position: 2, name: c.name, item: `${site.url}/category/${c.slug}/` }, { '@type': 'ListItem', position: 3, name: d.title, item: full }] },
+];
+---
+<Base title={d.title} description={d.description} image={d.featuredImage} type="article" schema={schema} published={iso(d.publishedAt)} modified={iso(d.updatedAt ?? d.publishedAt)}>
+  <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: c.name, href: `/category/${c.slug}/` }, { label: d.title }]} />
+  <div class="cols">
+    <div class="main">
+      <article class="post">
+        <header>
+          <a class="badge solo" href={`/category/${c.slug}/`}>{d.category}</a>
+          <h1>{d.title}</h1>
+          <p class="meta post-meta"><span><Icon name="user" size={14} /> {d.author}</span><time datetime={iso(d.publishedAt)}><Icon name="clock" size={14} /> {fmt(d.publishedAt)}</time>{d.updatedAt && d.updatedAt.valueOf() !== d.publishedAt.valueOf() && <span>Updated <time datetime={iso(d.updatedAt)}>{fmt(d.updatedAt)}</time></span>}</p>
+        </header>
+        <figure class="hero"><img src={d.featuredImage} width="1200" height="675" alt={d.featuredImageAlt ?? d.title} fetchpriority="high" decoding="async" /></figure>
+        <p class="lede">{d.description}</p>
+        <TableOfContents headings={headings} />
+        <div class="prose"><Content /></div>
+        {d.tags.length > 0 && <p class="tags"><span>Tags:</span>{d.tags.map((t) => <span class="tag">{t}</span>)}</p>}
+        <ShareButtons url={full} title={d.title} />
+        <nav class="pn" aria-label="Previous and next articles">
+          <div>{older && <a href={url(older)} rel="prev"><small>Older</small><span>{older.data.title}</span></a>}</div>
+          <div class="r">{newer && <a href={url(newer)} rel="next"><small>Newer</small><span>{newer.data.title}</span></a>}</div>
+        </nav>
+        <aside class="author"><b>{d.author}</b><p>Articles on How2Tech are written and reviewed by the editorial team to explain technology clearly and accurately.</p></aside>
+      </article>
+      <RelatedPosts posts={related(posts, post)} />
+    </div>
+    <Sidebar />
+  </div>
+</Base>

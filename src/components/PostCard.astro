@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+import { url, catOf, fmt, iso, thumb } from '../lib/posts';
+// v: ov = image overlay | big = overlay with excerpt | g = grid card | r = horizontal row | m = mini thumb list
+const { post, v = 'g', excerpt = true, author = false, lazy = true } = Astro.props;
+const d = post.data; const c = catOf(d.category); const href = url(post);
+const small = v === 'g' || v === 'r' || v === 'm';
+const src = small ? thumb(post) : d.featuredImage;
+const [w, h] = small ? [640, 360] : [1200, 675];
+const alt = d.featuredImageAlt ?? d.title;
+---
+{(v === 'ov' || v === 'big') && (
+  <article class={`card ov ${v}`}>
+    <img src={src} width={w} height={h} alt={alt} loading={lazy ? 'lazy' : 'eager'} decoding="async" />
+    <div class="ov-t">
+      <a class="badge" href={`/category/${c.slug}/`}>{d.category}</a>
+      <h3><a href={href}>{d.title}</a></h3>
+      <p class="meta">
+        {author && <span><Icon name="user" size={13} /> {d.author}</span>}
+        <time datetime={iso(d.publishedAt)}><Icon name="clock" size={13} /> {fmt(d.publishedAt)}</time>
+      </p>
+      {v === 'big' && excerpt && <p class="ex">{d.description}</p>}
+    </div>
+  </article>
+)}
+{v === 'g' && (
+  <article class="card g">
+    <div class="thumb"><img src={src} width={w} height={h} alt={alt} loading={lazy ? 'lazy' : 'eager'} decoding="async" /><a class="badge" href={`/category/${c.slug}/`}>{d.category}</a></div>
+    <h3><a href={href}>{d.title}</a></h3>
+    <p class="meta">{author && <span><Icon name="user" size={13} /> {d.author}</span>}<time datetime={iso(d.publishedAt)}><Icon name="clock" size={13} /> {fmt(d.publishedAt)}</time></p>
+    {excerpt && <p class="ex">{d.description}</p>}
+  </article>
+)}
+{v === 'r' && (
+  <article class="card r">
+    <div class="thumb"><img src={src} width={w} height={h} alt={alt} loading={lazy ? 'lazy' : 'eager'} decoding="async" /><a class="badge" href={`/category/${c.slug}/`}>{d.category}</a></div>
+    <div class="rb">
+      <h3><a href={href}>{d.title}</a></h3>
+      <p class="meta">{author && <span><Icon name="user" size={13} /> {d.author}</span>}<time datetime={iso(d.publishedAt)}><Icon name="clock" size={13} /> {fmt(d.publishedAt)}</time></p>
+      {excerpt && <p class="ex">{d.description}</p>}
+    </div>
+  </article>
+)}
+{v === 'm' && (
+  <article class="card m">
+    <img src={src} width={w} height={h} alt={alt} loading="lazy" decoding="async" />
+    <div><h3><a href={href}>{d.title}</a></h3><p class="meta"><time datetime={iso(d.publishedAt)}><Icon name="clock" size={13} /> {fmt(d.publishedAt)}</time></p></div>
+  </article>
+)}

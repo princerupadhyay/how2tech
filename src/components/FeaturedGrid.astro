@@ -1,0 +1,11 @@
+---
+import PostCard from './PostCard.astro';
+const { posts } = Astro.props;
+const [a, ...rest] = posts;
+---
+{a && (
+  <section class="fg" aria-label="Featured articles">
+    <PostCard post={a} v="ov" author lazy={false} />
+    <div class="fg-r">{rest.slice(0, 4).map((p: any) => <PostCard post={p} v="ov" lazy={false} />)}</div>
+  </section>
+)}

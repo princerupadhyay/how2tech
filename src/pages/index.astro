@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import FeaturedGrid from '../components/FeaturedGrid.astro';
+import CategorySection from '../components/CategorySection.astro';
+import SectionHead from '../components/SectionHead.astro';
+import PostCard from '../components/PostCard.astro';
+import Pagination from '../components/Pagination.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { site } from '../data/site';
+import { allPosts, byCategory } from '../lib/posts';
+const posts = await allPosts();
+const featured = posts.filter((p) => p.data.featured);
+const grid = [...featured, ...posts.filter((p) => !p.data.featured)].slice(0, 5);
+const per = site.postsPerPage;
+const total = Math.ceil(posts.length / per);
+const schema = [
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.url, description: site.description },
+  { '@context': 'https://schema.org', '@type': 'Organization', name: site.name, url: site.url, logo: `${site.url}/favicon.svg` },
+];
+---
+<Base title={site.name} description={site.description} schema={schema}>
+  <FeaturedGrid posts={grid} />
+  <div class="cols">
+    <div class="main">
+      <CategorySection name="Technology" posts={byCategory(posts, 'Technology')} layout="lead" />
+      <CategorySection name="Gaming" posts={byCategory(posts, 'Gaming')} layout="three" />
+      <CategorySection name="How-To" posts={byCategory(posts, 'How-To')} layout="three" />
+      <CategorySection name="AI & Tools" posts={byCategory(posts, 'AI & Tools')} layout="two" />
+      <CategorySection name="Internet & Security" posts={byCategory(posts, 'Internet & Security')} layout="list" />
+      <CategorySection name="Explained" posts={byCategory(posts, 'Explained')} layout="feature" />
+      <section class="cs">
+        <SectionHead title="Recent posts" />
+        <div class="rows">{posts.slice(0, per).map((p) => <PostCard post={p} v="r" author />)}</div>
+        <Pagination current={1} total={total} base="/page/" first="/" />
+      </section>
+    </div>
+    <Sidebar />
+  </div>
+</Base>

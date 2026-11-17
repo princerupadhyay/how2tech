@@ -1,0 +1,22 @@
+---
+import Logo from './Logo.astro';
+import PostCard from './PostCard.astro';
+import { footerLinks } from '../data/navigation';
+import { site } from '../data/site';
+import { allPosts } from '../lib/posts';
+const posts = await allPosts();
+const recent = posts.slice(0, 3);
+const popular = posts.filter((p) => p.data.popular).slice(0, 3);
+---
+<footer class="foot">
+  <div class="foot-g">
+    <section class="foot-about">
+      <div class="sh"><h2><span>About Us</span></h2></div>
+      <Logo tagline />
+      <p>{site.description}</p>
+    </section>
+    {recent.length > 0 && <section><div class="sh"><h2><span>Recent posts</span></h2></div>{recent.map((p) => <PostCard post={p} v="m" />)}</section>}
+    {popular.length > 0 && <section><div class="sh"><h2><span>Popular posts</span></h2></div>{popular.map((p) => <PostCard post={p} v="m" />)}</section>}
+  </div>
+  <div class="foot-b"><p>© {new Date().getFullYear()} How2Tech. All rights reserved.</p><ul>{footerLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul></div>
+</footer>

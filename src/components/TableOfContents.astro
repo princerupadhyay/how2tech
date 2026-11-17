@@ -1,0 +1,9 @@
+---
+const { headings } = Astro.props;
+const hs = headings.filter((h: any) => h.depth === 2 || h.depth === 3);
+---
+{hs.length > 2 && (
+  <details class="toc" open><summary>Table of contents</summary>
+    <ol>{hs.map((h: any) => <li class={`d${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+  </details>
+)}

@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+import '../styles/responsive.css';
+import Header from '../components/Header.astro';
+import BreakingTicker from '../components/BreakingTicker.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+const { title, description = site.description, image, type = 'website', path = Astro.url.pathname, schema = [], published, modified, noindex = false, showTicker = true } = Astro.props;
+const canonical = new URL(path, site.url).href;
+const fullTitle = title === site.name ? `${site.name} – ${site.tagline}` : `${title} | ${site.name}`;
+const og = new URL(image ?? '/images/og-default.png', site.url).href;
+const ld = [...schema];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400..800&display=swap" rel="stylesheet" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate" type="application/rss+xml" title="How2Tech RSS" href="/rss.xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={og} />
+  {published && <meta property="article:published_time" content={published} />}
+  {modified && <meta property="article:modified_time" content={modified} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={og} />
+  <meta name="theme-color" content="#111318" />
+  {ld.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="page">
+    <Header />
+    <div class="inner">{showTicker && <BreakingTicker />}<main id="main"><slot /></main></div>
+    <Footer />
+  </div>
+  <a href="#top" class="totop" id="totop" aria-label="Back to top" hidden><Icon name="up" size={20} /></a>
+  <script>
+    const t = document.getElementById('totop')!;
+    const upd = () => { t.hidden = scrollY < 600; };
+    addEventListener('scroll', upd, { passive: true }); upd();
+    t.addEventListener('click', (e) => { e.preventDefault(); scrollTo({ top: 0 }); });
+  </script>
+</body>
+</html>

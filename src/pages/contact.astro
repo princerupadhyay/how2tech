@@ -1,0 +1,9 @@
+---
+import PageShell from '../layouts/PageShell.astro';
+import { site } from '../data/site';
+---
+<PageShell title="Contact Us" description="Contact How2Tech with questions, corrections or partnership enquiries.">
+<p>Have a question, a correction or an idea for an article? We'd like to hear from you.</p>
+{site.contactEmail ? <p>Email: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></p> : <p><strong>[Add your contact email in <code>src/data/site.ts</code> (<code>contactEmail</code>) and it will appear here.]</strong></p>}
+<p>This site is static and has no contact form that stores messages. Email is the only way to reach us.</p>
+</PageShell>

@@ -1,0 +1,9 @@
+---
+import Base from './Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+const { title, description, showBreadcrumbs = true, centered = false } = Astro.props;
+---
+<Base title={title} description={description} showTicker={false}>
+  {showBreadcrumbs && <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: title }]} />}
+  <article class={centered ? 'page-art prose page-art-center' : 'page-art prose'}><h1>{title}</h1><slot /></article>
+</Base>

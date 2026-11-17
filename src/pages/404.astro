@@ -1,0 +1,9 @@
+---
+import PageShell from '../layouts/PageShell.astro';
+---
+<PageShell title="Page not found" description="The page you are looking for does not exist." showBreadcrumbs={false} centered>
+  <p>We couldn't find that page. It may have moved, or the link may be wrong.</p>
+  <nav class="not-found-nav" aria-label="Home">
+    <ul><li><a href="/">Home</a></li></ul>
+  </nav>
+</PageShell>

@@ -1,0 +1,19 @@
+---
+import SectionHead from './SectionHead.astro';
+import PostCard from './PostCard.astro';
+import { catOf } from '../lib/posts';
+// layout: lead | three | two | list | feature
+const { name, posts, layout } = Astro.props;
+const c = catOf(name);
+const [a, ...rest] = posts;
+---
+{posts.length > 0 && (
+  <section class="cs">
+    <SectionHead title={name} href={`/category/${c.slug}/`} />
+    {layout === 'lead' && <div class="lead"><PostCard post={a} v="big" /><div class="lead-l">{rest.slice(0, 4).map((p: any) => <PostCard post={p} v="m" />)}</div></div>}
+    {layout === 'three' && <div class="g3">{posts.slice(0, 3).map((p: any) => <PostCard post={p} v="g" excerpt={false} />)}</div>}
+    {layout === 'two' && <div class="g2">{posts.slice(0, 2).map((p: any) => <PostCard post={p} v="g" author />)}</div>}
+    {layout === 'list' && <div class="rows">{posts.slice(0, 3).map((p: any) => <PostCard post={p} v="r" />)}</div>}
+    {layout === 'feature' && <div><PostCard post={a} v="big" /><div class="g3 gap">{rest.slice(0, 3).map((p: any) => <PostCard post={p} v="g" excerpt={false} />)}</div></div>}
+  </section>
+)}

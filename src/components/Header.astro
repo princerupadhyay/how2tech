@@ -1,0 +1,126 @@
+---
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+import Advertisement from './Advertisement.astro';
+import { site } from '../data/site';
+import { navItems } from '../data/navigation';
+import { allPosts, url, byCategory } from '../lib/posts';
+const path = Astro.url.pathname;
+const posts = await allPosts();
+const active = (it: any) => it.href === '/' ? path === '/' : path.startsWith(it.href);
+const social = Object.entries(site.social).filter(([, v]) => v);
+---
+<div class="util">
+  <ul class="util-l"><li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul>
+  <ul class="util-r">{social.map(([k, v]) => <li><a href={v} rel="noopener" aria-label={k}><Icon name={k === 'x' ? 'twitter' : k} size={17} /></a></li>)}<li><a href="/rss.xml" aria-label="RSS feed"><Icon name="rss" size={17} /></a></li></ul>
+</div>
+<div class="brand"><Logo tagline /><Advertisement w={728} h={90} /></div>
+<div class="navwrap">
+  <nav class="nav" aria-label="Main">
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
+      <span class="burger-icon burger-icon-menu"><Icon name="menu" size={24} /></span>
+      <span class="burger-icon burger-icon-close"><Icon name="x" size={24} /></span>
+    </button>
+    <a class="nav-logo" href="/" aria-label="How2Tech home">How<b>2</b>Tech</a>
+    <ul class="nav-l">
+      {navItems.map((it) => {
+        const sub = it.cat ? byCategory(posts, it.cat).slice(0, 4) : [];
+        return (
+          <li class={sub.length ? 'dd' : ''}>
+            <a href={it.href} class={active(it) ? 'cur' : ''} aria-current={active(it) ? 'page' : undefined}>{it.label}{sub.length > 0 && <Icon name="down" size={13} />}</a>
+            {sub.length > 0 && <ul class="sub">{sub.map((p) => <li><a href={url(p)}>{p.data.title}</a></li>)}<li class="all"><a href={it.href}>All {it.label} articles</a></li></ul>}
+          </li>
+        );
+      })}
+    </ul>
+    <button class="sbtn" type="button" aria-label="Search" data-open-search><Icon name="search" size={20} /></button>
+  </nav>
+  <div class="mnav" id="mnav" hidden inert>
+    <ul>{navItems.map((it) => <li><a href={it.href} class={active(it) ? 'cur' : ''}>{it.label}</a></li>)}</ul>
+  </div>
+</div>
+
+<div class="sov" id="search" role="dialog" aria-modal="true" aria-label="Search articles" hidden>
+  <div class="sov-in">
+    <button class="sov-x" type="button" aria-label="Close search" data-close-search><Icon name="x" size={22} /></button>
+    <label for="q" class="sr">Search How2Tech</label>
+    <input id="q" type="search" placeholder="Search articles, categories, tags…" autocomplete="off" />
+    <div id="sres" aria-live="polite"></div>
+  </div>
+</div>
+
+<script>
+  const $ = <T extends HTMLElement>(s: string) => document.querySelector<T>(s)!;
+  // Mobile menu
+  const burger = $('.burger'), mnav = $('#mnav');
+  let closeHandler: ((event: TransitionEvent) => void) | undefined;
+  let closeTimer: number | undefined;
+  const setMenu = (open: boolean) => {
+    if (closeHandler) mnav.removeEventListener('transitionend', closeHandler);
+    if (closeTimer !== undefined) clearTimeout(closeTimer);
+    closeHandler = undefined;
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('menu-open', open);
+    mnav.inert = !open;
+    if (open) {
+      mnav.hidden = false;
+      requestAnimationFrame(() => { if (burger.getAttribute('aria-expanded') === 'true') mnav.classList.add('open'); });
+    } else {
+      mnav.classList.remove('open');
+      if (mnav.hidden) return;
+      const finish = () => {
+        mnav.hidden = true;
+        if (closeHandler) mnav.removeEventListener('transitionend', closeHandler);
+        closeHandler = undefined;
+        if (closeTimer !== undefined) clearTimeout(closeTimer);
+        closeTimer = undefined;
+      };
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        finish();
+      } else {
+        closeHandler = (event) => {
+          if (event.target === mnav && event.propertyName === 'grid-template-rows') finish();
+        };
+        mnav.addEventListener('transitionend', closeHandler);
+        closeTimer = window.setTimeout(finish, 350);
+      }
+    }
+  };
+  burger.addEventListener('click', () => setMenu(burger.getAttribute('aria-expanded') !== 'true'));
+  mnav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('resize', () => { if (innerWidth > 900) setMenu(false); });
+
+  // Search
+  type Item = { t: string; u: string; c: string; d: string; i: string; g: string[] };
+  const ov = $('#search'), input = $<HTMLInputElement>('#q'), out = $('#sres');
+  let index: Item[] | null = null;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]!));
+  const openS = async () => {
+    ov.hidden = false;
+    document.body.classList.add('lock');
+    input.focus();
+    if (!index) {
+      try {
+        const response = await fetch('/search.json');
+        if (!response.ok) throw new Error(`Search index request failed (${response.status})`);
+        index = await response.json();
+      } catch (error) {
+        console.error('Unable to load the search index.', error);
+        out.innerHTML = '<p class="sn">Search is unavailable right now. Please try again later.</p>';
+      }
+    }
+  };
+  const closeS = () => { ov.hidden = true; document.body.classList.remove('lock'); };
+  document.querySelectorAll('[data-open-search]').forEach((b) => b.addEventListener('click', openS));
+  document.querySelectorAll('[data-close-search]').forEach((b) => b.addEventListener('click', closeS));
+  ov.addEventListener('click', (e) => { if (e.target === ov) closeS(); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ov.hidden) closeS(); });
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    if (!q || !index) { out.innerHTML = ''; return; }
+    const words = q.split(/\s+/);
+    const hits = index.map((it) => { const hay = [it.t, it.d, it.c, ...it.g].join(' ').toLowerCase(); let s = 0; for (const w of words) { if (!hay.includes(w)) return { it, s: 0 }; s += it.t.toLowerCase().includes(w) ? 3 : 1; } return { it, s }; }).filter((h) => h.s).sort((a, b) => b.s - a.s).slice(0, 8);
+    out.innerHTML = hits.length ? '<ul class="sl">' + hits.map(({ it }) => `<li><a href="${it.u}"><img src="${it.i}" width="96" height="54" alt="" loading="lazy"><span><b>${esc(it.t)}</b><small>${esc(it.c)}</small></span></a></li>`).join('') + '</ul>' : `<p class="sn">No articles match “${esc(input.value.trim())}”. Try a shorter word, or browse a category from the menu.</p>`;
+  });
+</script>
