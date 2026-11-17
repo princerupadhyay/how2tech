@@ -7,7 +7,7 @@ const sitemapXmlAlias = {
   name: 'sitemap-xml-alias',
   hooks: {
     'astro:build:done': async ({ dir }) => {
-      await copyFile(new URL('sitemap-index.xml', dir), new URL('sitemap.xml', dir));
+      await copyFile(new URL('sitemap-0.xml', dir), new URL('sitemap.xml', dir));
     },
   },
 };
