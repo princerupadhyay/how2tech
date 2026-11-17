@@ -13,9 +13,9 @@ popular: true
 draft: false
 ---
 
-In this article, I will be covering everything related to hosting your Astro blog on GitHub Pages with your own custom domain. This particular setup will give you a free blog, your own domain name and HTTPS without paying anything for the hosting. So if you want to get your Astro blog live on your own domain then read this article till end. Hello guys! What's up? My name is Prince Upadhyay and welcome to How2Tech. Technology. Explained. Simplified. So let's start with the topic...
+In this article, I will be covering everything related to hosting your **Astro blog on GitHub Pages with your own custom domain**. This particular setup will give you a free blog, your own domain name and HTTPS without paying anything for the hosting. So if you want to get your Astro blog live on your own domain then read this article till end. Hello guys! What's up? My name is Prince Upadhyay and welcome to How2Tech. Technology. Explained. Simplified. So let's start with the topic...
 
-So since a static blog does not need a server so there is really no reason to pay for hosting every month. GitHub Pages is free and your site gets built and deployed every time you push your code, and that is it. In addition, a lot of the guides over there are written for Jekyll, and if you are using Astro then you end up jumping between the Astro docs, the GitHub docs and a lot of forum posts. The reason is simple, each one of them covers only one part of the story and you have to join the rest yourself.
+So since a static blog does not need a server so there is really no reason to pay for hosting every month. **GitHub Pages** is free and your site gets built and deployed every time you push your code, and that is it. In addition, a lot of the guides over there are written for Jekyll, and if you are using Astro then you end up jumping between the Astro docs, the GitHub docs and a lot of forum posts. The reason is simple, each one of them covers only one part of the story and you have to join the rest yourself.
 
 So in this particular article I will put the whole thing in one place, from the push to the HTTPS padlock. One thing, the domain name itself you have to buy from a registrar, that part is not free, only the hosting is.
 
@@ -37,7 +37,7 @@ Second thing is the workflow file. Inside your project create a file at `.github
 
 ## Step 3: Set the Pages source to GitHub Actions
 
-Third thing, go to your repository, Settings, then Pages, and under Source choose GitHub Actions. Now commit the workflow and push it and then go to the Actions tab and watch it run.
+Third thing, go to your repository, Settings, then Pages, and under Source choose **GitHub Actions**. Now commit the workflow and push it and then go to the Actions tab and watch it run.
 
 ![GitHub Actions showing a successful GitHub Pages deployment run](/images/astro-github-pages-custom-domain-actions-run.webp)
 
@@ -47,13 +47,13 @@ Fourth thing, and this is a really important one, is your astro.config file. Set
 
 ## Step 5: Add your custom domain in GitHub
 
-Fifth thing, add the custom domain in GitHub first, before you touch your DNS. GitHub says this in its own docs because if you set up the DNS without adding the domain to your Pages site then somebody else could end up hosting a site on one of your subdomains. So in Settings, Pages, type your domain in the custom domain box and click save. GitHub also recommends that you verify your domain in your account settings, so do that as well, it only takes a few minutes.
+Fifth thing, add the **custom domain** in GitHub first, before you touch your **DNS**. GitHub says this in its own docs because if you set up the DNS without adding the domain to your Pages site then somebody else could end up hosting a site on one of your subdomains. So in Settings, Pages, type your domain in the custom domain box and click save. GitHub also recommends that you verify your domain in your account settings, so do that as well, it only takes a few minutes.
 
 ![GitHub Pages settings with the custom domain entered](/images/astro-github-pages-custom-domain-custom-domain-setting.webp)
 
 ## Step 6: Set up the DNS records
 
-Sixth thing is the DNS records at your registrar. I recommend setting up both the apex domain, that is example.com, and the www version. For the apex domain you create A records pointing to these four GitHub Pages addresses: `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`. GitHub also lists AAAA records for IPv6 in the same docs page if you want them. For www you create a CNAME record that points www to `yourusername.github.io`. And one more thing, point it to your username only and not the repository name, GitHub specifically says this in its docs. Don't use wildcard records either, GitHub strongly says not to because of domain takeover risk.
+Sixth thing is the **DNS records** at your registrar. I recommend setting up both the apex domain, that is example.com, and the www version. For the apex domain you create **A records** pointing to these four GitHub Pages addresses: `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153`. GitHub also lists AAAA records for IPv6 in the same docs page if you want them. For www you create a **CNAME record** that points www to `yourusername.github.io`. And one more thing, point it to your username only and not the repository name, GitHub specifically says this in its docs. Don't use wildcard records either, GitHub strongly says not to because of domain takeover risk.
 
 Since you have both of them set up so GitHub will redirect between the two automatically, so you don't have to do anything for that.
 
@@ -63,7 +63,7 @@ Now check the apex records with the `dig` command, put your domain in it and see
 
 ## Step 7: Turn on Enforce HTTPS
 
-Seventh thing, go back to Settings, Pages. Once GitHub's DNS check is done you will see the Enforce HTTPS option, tick that. GitHub gives you the certificate for custom domains for free. If the box is greyed out then it is still waiting for the certificate, so give it time and then come back.
+Seventh thing, go back to Settings, Pages. Once GitHub's DNS check is done you will see the **Enforce HTTPS** option, tick that. GitHub gives you the certificate for custom domains for free. If the box is greyed out then it is still waiting for the certificate, so give it time and then come back.
 
 ![GitHub Pages settings showing HTTPS provisioning and the custom domain status](/images/astro-github-pages-custom-domain-https-provisioning.webp)
 
@@ -89,4 +89,4 @@ The checking tool is how you know that the records are right before you start bl
 
 Now let me explain the logic behind this. Why do we leave the base value empty? Because base is only for when your site lives inside a folder of the address, like `username.github.io/my-repo`. In that case Astro needs to know that your website root is not the real root. But with a custom domain your site sits at the root of your own domain, so if you keep the base over there then your links and your CSS will look for the wrong path and the site will break. And why GitHub Actions instead of the old way of publishing from a branch? Why? Because with Actions the build runs on GitHub every time you push, so you don't have to build on your computer and commit the built files. You just write your post, push, and it is live.
 
-So friends, this was How to Host an Astro Blog on GitHub Pages with a Custom Domain was this article helpful to you? Let me know which one you would prefer or like to use, in the comments section below. Till then, I'm signing off, So stay tuned and stay safe...😊
+So friends, this was **How to Host an Astro Blog on GitHub Pages with a Custom Domain - How2Tech**. Was this article helpful to you? Let me know which one you would prefer or like to use, in the comments section below. Till then, I'm signing off, So stay tuned and stay safe...😊
