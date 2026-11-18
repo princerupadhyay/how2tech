@@ -27,8 +27,6 @@ main{min-width:0}
 .logo-t{font-weight:900;font-size:clamp(32px,5vw,46px);letter-spacing:-.04em;line-height:1;color:#111}
 .logo b,.nav-logo b{color:var(--red);font-weight:900}
 .logo small{font-size:12px;color:var(--mut);letter-spacing:.02em}
-.ad{width:100%;max-width:calc(var(--w)*1px);aspect-ratio:var(--w)/var(--h);background:#f0f0f0;border:1px solid #ddd;display:grid;place-items:center;color:#bbb;font-weight:700;font-style:italic;font-size:clamp(14px,2.4vw,26px);min-width:0}
-.brand .ad{flex:1 1 0}
 /* nav */
 .navwrap{position:sticky;top:0;z-index:60;background:#fff;padding:0}
 .nav{display:flex;align-items:stretch;background:var(--nav);height:58px;border-radius:2px}

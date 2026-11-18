@@ -11,7 +11,6 @@
   .fg-r>.ov{height:230px}
   .cols{grid-template-columns:minmax(0,1fr)}
   .side{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
-  .side .w:nth-child(2){grid-column:1/-1}
   .burger{display:grid}
   .nav-l{display:none}
   .nav-logo{display:flex;flex:1;justify-content:center}

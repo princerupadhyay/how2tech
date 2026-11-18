@@ -1,7 +1,6 @@
 ---
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
-import Advertisement from './Advertisement.astro';
 import { site } from '../data/site';
 import { navItems } from '../data/navigation';
 import { allPosts, url, byCategory } from '../lib/posts';
@@ -14,7 +13,7 @@ const social = Object.entries(site.social).filter(([, v]) => v);
   <ul class="util-l"><li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul>
   <ul class="util-r">{social.map(([k, v]) => <li><a href={v} rel="noopener" aria-label={k}><Icon name={k === 'x' ? 'twitter' : k} size={17} /></a></li>)}<li><a href="/rss.xml" aria-label="RSS feed"><Icon name="rss" size={17} /></a></li></ul>
 </div>
-<div class="brand"><Logo tagline /><Advertisement w={728} h={90} /></div>
+<div class="brand"><Logo tagline /></div>
 <div class="navwrap">
   <nav class="nav" aria-label="Main">
     <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">

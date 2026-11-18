@@ -1,7 +1,6 @@
 ---
 import Icon from './Icon.astro';
 import PostCard from './PostCard.astro';
-import Advertisement from './Advertisement.astro';
 import { site } from '../data/site';
 import { categories } from '../data/categories';
 import { allPosts, byCategory } from '../lib/posts';
@@ -16,7 +15,6 @@ const W = (t: string) => t;
   <section class="w"><div class="sh"><h2><span>Categories</span></h2></div>
     <ul class="cats">{categories.map((c) => { const n = byCategory(posts, c.name).length; return n > 0 && <li><a href={`/category/${c.slug}/`} style={`background:${c.color}`}><span><i></i>{c.name}</span><em>{n} {n === 1 ? 'post' : 'posts'}</em></a></li>; })}</ul>
   </section>
-  <section class="w"><Advertisement w={300} h={250} /></section>
   {popular.length > 0 && <section class="w"><div class="sh"><h2><span>Popular posts</span></h2></div>{popular.map((p) => <PostCard post={p} v="m" />)}</section>}
   <section class="w">
     <div class="sh"><h2><span>Policy Pages</span></h2></div>

@@ -22,17 +22,17 @@ const schema = [
   <FeaturedGrid posts={grid} />
   <div class="cols">
     <div class="main">
+      <section class="cs">
+        <SectionHead title="Recent posts" />
+        <div class="rows">{posts.slice(0, per).map((p) => <PostCard post={p} v="r" author />)}</div>
+        <Pagination current={1} total={total} base="/page/" first="/" />
+      </section>
       <CategorySection name="Technology" posts={byCategory(posts, 'Technology')} layout="lead" />
       <CategorySection name="Gaming" posts={byCategory(posts, 'Gaming')} layout="three" />
       <CategorySection name="How-To" posts={byCategory(posts, 'How-To')} layout="three" />
       <CategorySection name="AI & Tools" posts={byCategory(posts, 'AI & Tools')} layout="two" />
       <CategorySection name="Internet & Security" posts={byCategory(posts, 'Internet & Security')} layout="list" />
       <CategorySection name="Explained" posts={byCategory(posts, 'Explained')} layout="feature" />
-      <section class="cs">
-        <SectionHead title="Recent posts" />
-        <div class="rows">{posts.slice(0, per).map((p) => <PostCard post={p} v="r" author />)}</div>
-        <Pagination current={1} total={total} base="/page/" first="/" />
-      </section>
     </div>
     <Sidebar />
   </div>
