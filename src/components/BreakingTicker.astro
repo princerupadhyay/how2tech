@@ -5,7 +5,7 @@ const items = (await allPosts()).filter((p) => p.data.featured).slice(0, 6);
 ---
 {items.length > 0 && (
   <div class="ticker" data-ticker>
-    <span class="tk-label">Trending</span>
+    <span class="tk-label"><span class="tk-label-text">Trending</span><span class="tk-label-icon" aria-hidden="true"><Icon name="trend" size={18} /></span></span>
     <div class="tk-body">{items.map((p, i) => <a href={url(p)} class={i === 0 ? 'on' : ''} tabindex={i === 0 ? 0 : -1}>{p.data.title}</a>)}</div>
     {items.length > 1 && <div class="tk-ctl"><button type="button" data-prev aria-label="Previous"><Icon name="left" size={14} /></button><button type="button" data-next aria-label="Next"><Icon name="right" size={14} /></button></div>}
   </div>

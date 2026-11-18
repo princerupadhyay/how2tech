@@ -5,6 +5,7 @@
   .nav-l>li>a{padding:0 11px;font-size:13px}
 }
 @media (max-width:900px){
+  .util{display:none}
   .fg{grid-template-columns:1fr;height:auto}
   .fg>.ov{height:380px}
   .fg-r>.ov{height:230px}
@@ -35,6 +36,9 @@
   .util-l a{padding:10px 8px}
   .ticker{margin:18px 0}
   .tk-label{padding:8px 9px}
+  .tk-label-text{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .tk-label-icon{display:inline-flex}
+  .tk-label{display:grid;place-items:center;width:34px;height:34px;padding:0}
 }
 @media (max-width:400px){
   .soc{grid-template-columns:1fr}
