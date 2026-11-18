@@ -10,7 +10,7 @@ export const url = (p: Post) => `/${p.slug}/`;
 export const catOf = (name: string) => categories.find((c) => c.name === name) ?? categories[0];
 export const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 export const iso = (d: Date) => d.toISOString().slice(0, 10);
-export const thumb = (p: Post) => p.data.featuredImage.replace(/\.webp$/, '-sm.webp');
+export const thumb = (p: Post) => p.data.featuredImage;
 export function byCategory(posts: Post[], name: string) { return posts.filter((p) => p.data.category === name); }
 export function related(posts: Post[], post: Post, n = 3) {
   return posts.filter((p) => p.slug !== post.slug)

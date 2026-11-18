@@ -29,7 +29,7 @@ draft: false      # true = hidden everywhere
 ---
 Article body in Markdown. Use ## and ### headings; the table of contents is automatic.
 ```
-Thumbnails: also add `public/images/my-article-title-sm.webp` (640x360). Cards use it.
+Cards reuse the `featuredImage`; no separate `-sm.webp` thumbnail file is needed.
 
 ## Replace demo content
 Delete the 12 files in `src/content/blog/` and their images in `public/images/`. Each category page only exists while it has at least one article.
