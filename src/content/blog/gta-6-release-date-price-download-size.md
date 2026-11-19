@@ -93,4 +93,4 @@ Now let me explain the logic behind this. Why should you **preload** and **free 
 
 Related: [Beyond Vice City: 10 Things That Could Make GTA 6 Rockstar's Biggest Game Ever](/blog/beyond-vice-city-gta-6-biggest-rockstar-game)
 
-So friends, this was GTA 6 Is Finally Here: Release Date, Price, Download Size, Platforms and Everything You Need to Know was this article helpful to you? Let me know which one you would prefer or like to use, in the comments section below. Till then, I'm signing off, So stay tuned and stay safe...😊
+So friends, this was **GTA 6 Is Finally Here: Release Date, Price, Download Size, Platforms and Everything You Need to Know**. Was this article helpful to you? Let me know which one you would prefer or like to use, in the comments section below. Till then, I'm signing off, So stay tuned and stay safe...😊
