@@ -1,5 +1,5 @@
 ---
-title: "GTA 6 Is Finally Here: Release Date, Price, Download Size, Platforms and Everything You Need to Know"
+title: "GTA 6 Is Finally Here: Release Date, Price, Download Size, Platforms and Everything You Need to Know - How2Tech"
 description: "GTA 6 is finally here! Explore its release details, price, supported platforms, download size, gameplay features and everything you need to know."
 category: "Gaming"
 tags: ["GTA 6", "Rockstar Games", "PS5", "Xbox Series X/S", "Gaming"]
