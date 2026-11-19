@@ -2,8 +2,8 @@
 title: "Anthropic IPO Is Here: ANT Stock, the $83 Price, and Should You Care"
 description: "Anthropic priced its IPO at $83 and ANT starts trading on Nasdaq today. Price, valuation, how to buy ANT stock, and what readers outside the US can do."
 category: "Explained"
-tags: ["Anthropic","IPO","ANT stock","Claude","AI","ThursdayTalks"]
-author: "How2Tech Editorial Team"
+tags: ["Anthropic", "IPO", "ANT stock", "Claude", "AI", "ThursdayTalks"]
+author: "Prince Upadhyay"
 publishedAt: 2026-11-19
 updatedAt: 2026-11-19
 featuredImage: "/images/anthropic-ipo-2026.webp"
@@ -13,7 +13,6 @@ popular: false
 draft: false
 ---
 
-
 In this article, I will be covering everything related to the Anthropic IPO. This particular article will tell you the price, the ticker and how you can actually get the stock, even if you are sitting outside the US. So if you want to understand this IPO without all the finance jargon then read this article till end. Hello guys! What's up? My name is Prince Upadhyay and welcome to How2Tech. Technology. Explained. Simplified. And this is the first post of a new series on the blog called #ThursdayTalks, so every Thursday we will be talking about one big thing in tech. So let's start with the topic...
 
 So since Anthropic priced its IPO yesterday evening so today, Thursday 19 November, the stock starts trading on the Nasdaq under the ticker ANT. The price was set at $83 a share and that is above the range of $70 to $78 which the company gave earlier. When a company prices above its range it basically means a lot more people wanted the shares than there were shares, and Bloomberg reported that the orders were around six times the shares available, you know. So the company behind Claude is now a public company, okay?
@@ -22,7 +21,7 @@ In addition, a lot of people are searching for this right now and most of them a
 
 In this article I won't be teaching you in detail about the AI coding tools out there which I have already done that in this article. So do check this one out but later on. Go to that article after this particular. Okay?
 
-[Microsoft MAI Code 2 vs GitHub Copilot: It's Not a Rival, It's a New Model Inside Copilot](/blog/microsoft-mai-code-2-vs-github-copilot/)
+[Microsoft MAI Code 2 vs GitHub Copilot: It's Not a Rival, It's a New Model Inside Copilot](/microsoft-mai-code-2-vs-github-copilot/)
 
 ## What Happened With the Anthropic IPO
 

@@ -17,21 +17,21 @@ In this article, I will be covering everything related to **[GTA 6](https://www.
 
 ## GTA 6 at a Glance
 
-| Detail        | Confirmed information (as of 19 November 2026)                       |
-| ------------- | -------------------------------------------------------------------- |
-| Release date  | **Thursday, 19 November 2026**, midnight local time (12 am IST in India) |
-| Platforms     | **[PlayStation 5](https://www.playstation.com/)** and **[Xbox Series X/S](https://www.xbox.com/)** |
-| Price (US)    | **$79.99 Standard**, **$99.99 Ultimate** |
+| Detail        | Confirmed information (as of 19 November 2026)                                                                                |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Release date  | **Thursday, 19 November 2026**, midnight local time (12 am IST in India)                                                      |
+| Platforms     | **[PlayStation 5](https://www.playstation.com/)** and **[Xbox Series X/S](https://www.xbox.com/)**                            |
+| Price (US)    | **$79.99 Standard**, **$99.99 Ultimate**                                                                                      |
 | Price (India) | **Rs 5,999 Standard**, **Rs 7,499 Ultimate** on [PlayStation Store India](https://store.playstation.com/en-in/search/GTA%206) |
-| Download size | **Up to 212 GB**, depending on device |
-| PC release    | **No date announced** |
-| Online mode   | **Not at launch**, no official date |
+| Download size | **Up to 212 GB**, depending on device                                                                                         |
+| PC release    | **No date announced**                                                                                                         |
+| Online mode   | **Not at launch**, no official date                                                                                           |
 
 So since **GTA 6** is unlocking today so for a lot of people this is the day they took a leave from the office for. The last main GTA came in September 2013 and that is 13 years ago, okay? And in between **Rockstar Games** first said 2025, then they said 26 May 2026, then in November 2025 they pushed it again to **19 November 2026**. So that is two delays and a lot of waiting and now it is actually here. I am writing this on the launch day itself so everything over here is as of 19 November 2026.
 
 In addition, a lot of people are confused because there is so much noise right now. Somebody says **PC** is coming next month, somebody says the **online mode** is also coming along with the game, and none of it is really confirmed. The reason is simple, **[Rockstar Games](https://www.rockstargames.com/)** does not say much and then the rumours fill that gap. So over here I will keep the confirmed things and the rumours separate. Now that I have made sure that you know why this particular article exists let's get started.
 
-In this article I won't be teaching you the wishlist and the speculation of what could make GTA 6 the biggest Rockstar game in detail which I have already done that in this article. So do check this one out but later on. [Beyond Vice City: 10 Things That Could Make GTA 6 Rockstar's Biggest Game Ever](/blog/beyond-vice-city-gta-6-biggest-rockstar-game) This one is only about the facts which are confirmed, you know.
+In this article I won't be teaching you the wishlist and the speculation of what could make GTA 6 the biggest Rockstar game in detail which I have already done that in this article. So do check this one out but later on. [Beyond Vice City: 10 Things That Could Make GTA 6 Rockstar's Biggest Game Ever](/beyond-vice-city-gta-6-biggest-rockstar-game) This one is only about the facts which are confirmed, you know.
 
 ## GTA 6 Release Date and Time
 
@@ -91,6 +91,6 @@ The store page tells you the actual price in your region and the unlock time for
 
 Now let me explain the logic behind this. Why should you **preload** and **free up the space** now? Because the file is huge and a lot of people are downloading at the same time. Even internet providers have warned that the number of preloads running is slowing down the internet for people. So if you are one of those people who started the download at midnight then it may take a lot more time than you think, and honestly the first few hours after a launch are always like that with the servers and all that. The reason is simple, everybody wants to play at the same time and the internet does not care how long you waited for this game.
 
-Related: [Beyond Vice City: 10 Things That Could Make GTA 6 Rockstar's Biggest Game Ever](/blog/beyond-vice-city-gta-6-biggest-rockstar-game)
+Related: [Beyond Vice City: 10 Things That Could Make GTA 6 Rockstar's Biggest Game Ever](/beyond-vice-city-gta-6-biggest-rockstar-game)
 
 So friends, this was **GTA 6 Is Finally Here: Release Date, Price, Download Size, Platforms and Everything You Need to Know**. Was this article helpful to you? Let me know which one you would prefer or like to use, in the comments section below. Till then, I'm signing off, So stay tuned and stay safe...😊
