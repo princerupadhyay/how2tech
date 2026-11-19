@@ -9,7 +9,7 @@ updatedAt: 2026-11-19
 featuredImage: "/images/anthropic-ipo-2026.webp"
 featuredImageAlt: "Abstract illustration of a stock ticker showing ANT with a rising arrow, representing the Anthropic IPO"
 featured: true
-popular: false
+popular: true
 draft: false
 ---
 
