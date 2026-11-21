@@ -1,5 +1,5 @@
 ---
-title: "What Happens to Your Data After You Delete an Instagram Account?"
+title: "What Happens to Your Data After You Delete an Instagram Account? - How2Tech"
 description: "Deleting Instagram does not erase everything at once. See what is removed, what stays, and how the 30-day and 90-day timeline works before you press delete."
 category: "Internet & Security"
 tags: ["Instagram", "Privacy", "Account deletion", "Meta", "Data security"]
