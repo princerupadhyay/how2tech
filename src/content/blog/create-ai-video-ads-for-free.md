@@ -6,7 +6,7 @@ tags: ["google-flow", "ai-video", "ai-ads", "veo-3-1"]
 author: "Prince Upadhyay"
 publishedAt: 2026-11-26
 updatedAt: 2026-11-26
-featuredImage: "/images/create-ai-video-ads-for-free/create-ai-video-ads-for-free-hero.webp"
+featuredImage: "/images/create-ai-video-ads-for-free-hero.webp"
 featuredImageAlt: "AI ADS = FREE? thumbnail with a golden feather generated in Google Flow"
 featured: true
 popular: true
