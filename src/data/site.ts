@@ -1,6 +1,6 @@
 export const site = {
   name: 'How2Tech',
-  url: 'https://how2tech.in',
+  url: 'https://www.how2tech.in',
   tagline: 'Technology. Explained. Simplified.',
   description: 'How2Tech publishes clear, beginner-friendly guides, explainers and tool roundups about technology, the internet and everyday computing.',
   // Leave a value empty to hide that link. Never put placeholder URLs here.
