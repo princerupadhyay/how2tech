@@ -15,9 +15,9 @@ publishedAt: 2026-11-27
 updatedAt: 2026-11-27
 featuredImage: "/images/create-youtube-shorts-without-showing-face-for-free.webp"
 featuredImageAlt: "Thumbnail for the guide to making YouTube Shorts without showing your face, 100% free, with a phone showing an AI-made Short"
-featured: false
-popular: false
-draft: true
+featured: true
+popular: true
+draft: false
 ---
 
 In this article, I will be covering everything related to **creating faceless YouTube Shorts for free using AI**. This particular workflow will take you from a blank screen to a finished Short on your channel without you showing your face, without you recording your voice and without a paid subscription. So if you want to start a Shorts channel with zero budget then read this article till end.
